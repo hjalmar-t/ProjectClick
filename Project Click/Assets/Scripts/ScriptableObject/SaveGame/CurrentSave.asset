@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f606fb7226e72342bde14e361290498, type: 3}
+  m_Name: CurrentSave
+  m_EditorClassIdentifier: 
+  currentInventory: {fileID: 11400000, guid: 2def835c59380f648bf82478d705a1bb, type: 2}
+  savedInventory: {fileID: 11400000, guid: 5e2d9204db6b1204cb07cf75b021ba39, type: 2}
+  levelName: TestScene
+  playerPosition: {x: 0, y: 0, z: 5}

@@ -1,0 +1,34 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
+
+public class InfoWindow : MonoBehaviour
+{
+    public PlayerTarget target;
+    public Text text;
+
+    public GameObject info;
+
+    private void Start() {
+        //text = GetComponent<Text>();
+    }
+
+    void Update()
+    {
+        if(target.inspectTarget == null) return;
+
+        if(target.inspectTarget.CompareTag("Entity")) {
+            info.SetActive(true);
+            transform.position = Input.mousePosition + new Vector3(1, 1, 0);
+
+            Entity entity = target.inspectTarget.GetComponent<Entity>();
+
+            text.text = string.Format("{0} {1}.", entity.getInteractionName(), entity.getEntityName());
+        }
+        else if(info.activeInHierarchy) {
+            info.SetActive(false);
+        }
+    }
+}

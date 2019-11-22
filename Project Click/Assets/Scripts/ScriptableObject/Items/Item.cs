@@ -12,6 +12,8 @@ public class Item : ScriptableObject
     List<string> combineWith = new List<string>();
     List<string> combineTo = new List<string>();
 
+    public Sprite GetItemImage() { return itemImage; }
+
     bool canCombine() {
         if(combineWith[0] != null) return true;
         return false;
