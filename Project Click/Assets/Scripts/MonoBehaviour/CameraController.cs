@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class CameraController : MonoBehaviour
 {
@@ -39,6 +40,9 @@ public class CameraController : MonoBehaviour
     }
 
     void Zoom() {
+        // Zooming is not allowed while the player is hovering over UI objects, since the control is shifted there.
+        if(EventSystem.current.IsPointerOverGameObject()) return;
+
         Transform camera = Camera.main.transform;
         float scrollAxis = Input.GetAxis("Mouse ScrollWheel") * 50;
 

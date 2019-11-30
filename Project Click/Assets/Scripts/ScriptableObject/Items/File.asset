@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b8ebc87ec74d56344a9d24334278a05e, type: 3}
-  m_Name: Key1
+  m_Name: File
   m_EditorClassIdentifier: 
-  itemName: Key1
-  itemImage: {fileID: 21300000, guid: 3fd0138877d83e947baceb48158a4224, type: 3}
-  description: 
+  itemName: Crooked File
+  itemImage: {fileID: 21300000, guid: 61331ab3c7757354492994d20cb7161a, type: 3}
+  description: A small metal file. Useful for filing things.
   descriptionLong: 

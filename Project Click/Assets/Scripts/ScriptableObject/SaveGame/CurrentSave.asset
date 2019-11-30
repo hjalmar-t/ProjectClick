@@ -15,4 +15,4 @@ MonoBehaviour:
   currentInventory: {fileID: 11400000, guid: 2def835c59380f648bf82478d705a1bb, type: 2}
   savedInventory: {fileID: 11400000, guid: 5e2d9204db6b1204cb07cf75b021ba39, type: 2}
   levelName: TestScene
-  playerPosition: {x: 0, y: 0, z: 5}
+  playerPosition: {x: 0, y: 0, z: 0}

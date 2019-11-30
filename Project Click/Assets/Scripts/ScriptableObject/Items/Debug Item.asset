@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b8ebc87ec74d56344a9d24334278a05e, type: 3}
-  m_Name: Key1
+  m_Name: Debug Item
   m_EditorClassIdentifier: 
-  itemName: Key1
-  itemImage: {fileID: 21300000, guid: 3fd0138877d83e947baceb48158a4224, type: 3}
-  description: 
+  itemName: Red Gem
+  itemImage: {fileID: 21300000, guid: 28c65dc2b22ae3c439989b3f77e519b2, type: 3}
+  description: A shiny gemstone. Red as blood.
   descriptionLong: 
