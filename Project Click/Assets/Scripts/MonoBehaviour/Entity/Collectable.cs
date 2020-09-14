@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Base class for collectable items.
+/// </summary>
 public class Collectable : Entity
 {
     public Item thisItem;
-    public SaveGame save;
 
     public override void Interract() {
         if(!activated) {

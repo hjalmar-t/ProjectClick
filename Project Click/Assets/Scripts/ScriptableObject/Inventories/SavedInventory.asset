@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6951ad5e0229afb4bbfaaa58ab54ae92, type: 3}
   m_Name: SavedInventory
   m_EditorClassIdentifier: 
+  state: 0
   current: -1
   items:
-  - {fileID: 11400000, guid: b53272a3c0f4ff148a93e3b539428d60, type: 2}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

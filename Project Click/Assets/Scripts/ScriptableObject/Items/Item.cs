@@ -4,26 +4,51 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [CreateAssetMenu]
-public class Item : ScriptableObject
-{
+public class Item : ScriptableObject {
+
+    //public class Combination {
+    //    public Item combineWith;
+    //    public Item combineTo;
+    //    public bool destroyOnCombine;
+
+    //    Combination(Item item1, Item item2, bool destroy) {
+    //        combineWith = item1;
+    //        combineTo = item2;
+    //        destroyOnCombine = destroy;
+    //    }
+    //}
+
     public string itemName;
     public Sprite itemImage;
     public string description;
     public string descriptionLong;
 
+    //[SerializeField]
+    //public List<Combination> combinations = new List<Combination>();
+    //[SerializeField]
+    //public Combination combination;
 
-    List<string> combineWith = new List<string>();
-    List<string> combineTo = new List<string>();
+    public Item combineWith;
+    public Item combineTo;
+    public bool destroyOnCombine;
 
     public string GetItemName() { return itemName; }
     public Sprite GetItemImage() { return itemImage; }
     public string GetDescription() { return description; }
     public string GetDescriptionLong() { return description; }
 
-
-    bool canCombine() {
-        if(combineWith[0] != null) return true;
-        return false;
-    }
-
 }
+
+//[Serializable]
+//public class Combination
+//{
+//    public Item combineWith;
+//    public Item combineTo;
+//    public bool destroyOnCombine;
+
+//    Combination(Item item1, Item item2, bool destroy) {
+//        combineWith = item1;
+//        combineTo = item2;
+//        destroyOnCombine = destroy;
+//    }
+//}

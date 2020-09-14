@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class InfoWindow : MonoBehaviour
 {
-    public PlayerTarget target;
+    public SaveGame save;
     public Text text;
 
     public GameObject info;
@@ -17,18 +17,32 @@ public class InfoWindow : MonoBehaviour
 
     void Update()
     {
-        if(target.inspectTarget == null) return;
+        Entity entity = save.GetHoverTarget();
 
-        if(target.inspectTarget.CompareTag("Entity")) {
+        if(entity == null) {
+            info.SetActive(false);
+            return;
+        }
+        else {
             info.SetActive(true);
             transform.position = Input.mousePosition + new Vector3(1, 1, 0);
 
-            Entity entity = target.inspectTarget.GetComponent<Entity>();
+            text.text = string.Format("{0} {1}", entity.getInteractionName(), entity.getEntityName());
+        }
 
-            text.text = string.Format("{0} {1}.", entity.getInteractionName(), entity.getEntityName());
-        }
-        else if(info.activeInHierarchy) {
-            info.SetActive(false);
-        }
+
+
+        //if(target.inspectTarget.CompareTag("Entity")) {
+
+        //    info.SetActive(true);
+        //    transform.position = Input.mousePosition + new Vector3(1, 1, 0);
+
+        //    Entity entity = target.inspectTarget.GetComponent<Entity>();
+
+        //    text.text = string.Format("{0} {1}.", entity.getInteractionName(), entity.getEntityName());
+        //}
+        //else if(info.activeInHierarchy) {
+        //    info.SetActive(false);
+        //}
     }
 }

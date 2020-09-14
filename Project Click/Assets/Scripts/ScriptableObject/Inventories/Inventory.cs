@@ -6,10 +6,14 @@ using UnityEngine;
 public class Inventory : ScriptableObject
 {
 
-    //class Page
-    //{
-    //    Item[] items = new Item[size];
-    //}
+    public enum State
+    {
+        none,
+        use,
+        move
+    }
+
+    public State state;
 
     public static int size = 100;
 
@@ -42,5 +46,9 @@ public class Inventory : ScriptableObject
         Item temp = items[i];
         items[i] = items[current];
         items[current] = temp;
+    }
+
+    public void RemoveAtIndex(int i) {
+        items[i] = null;
     }
 }

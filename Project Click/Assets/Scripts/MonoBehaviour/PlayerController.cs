@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     NavMeshAgent agent;
     Animator anim;
 
-    public PlayerTarget target;
+    //public PlayerTarget target;
 
     void Start() {
         agent = GetComponent<NavMeshAgent>();
@@ -18,13 +18,13 @@ public class PlayerController : MonoBehaviour
 
     void Update() {
         // Debug command for displaying the currentmost click target
-        if(Input.GetKeyDown(KeyCode.P) && target.movementTarget != null) Debug.Log("Currentmost leftclicked object: " + target.movementTarget.name);
+        //if(Input.GetKeyDown(KeyCode.P) && target.movementTarget != null) Debug.Log("Currentmost leftclicked object: " + target.movementTarget.name);
 
         // Get a ray based on the mouse position
         Ray mousePointNormal = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         ClickToReact(mousePointNormal);
-        ClickToInspect(mousePointNormal);
+        //ClickToInspect(mousePointNormal);
 
         anim.SetBool("moving", isMoving());
 
@@ -46,12 +46,12 @@ public class PlayerController : MonoBehaviour
         if(Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject()) {
             RaycastHit mouseClick;
 
+            // Move to clicked position. If the clicked object is an entity, play the interaction animation when close enough.
             if(Physics.Raycast(mousePointNormal, out mouseClick, Mathf.Infinity)) {
                 agent.destination = mouseClick.point;
-                target.movementTarget = mouseClick.collider.gameObject;
+                //Vector3 clickTarget = mouseClick.collider.gameObject;
 
-                if(Vector3.Distance(target.movementTarget.transform.position, transform.position) < 2.0f && target.movementTarget.CompareTag("Entity")) {
-                    target.movementTarget.GetComponent<Entity>().Interract();
+                if(Vector3.Distance(mouseClick.collider.transform.position, transform.position) < 2.0f && mouseClick.collider.CompareTag("Entity")) {
                     anim.SetTrigger("activate");
                 }
             }
@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
             RaycastHit mouseClick;
 
             if(Physics.Raycast(mousePointNormal, out mouseClick, Mathf.Infinity)) {
-                target.inspectTarget = mouseClick.collider.gameObject;
+                //target.inspectTarget = mouseClick.collider.gameObject;
             }
         }
 

@@ -5,12 +5,14 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public SaveGame save;
-    public GameObject player;
+    public GameObject playerPrefab;
 
     private void Start() {
-        if(player != null) {
-            player.transform.position = save.playerPosition;
+        if(playerPrefab != null) {
             save.currentInventory.Copy(save.savedInventory);
+
+            GameObject playerObject = Instantiate(playerPrefab, save.playerPosition, Quaternion.identity);
+            save.SetPlayer(playerObject);
         }
     }
 }

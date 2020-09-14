@@ -5,10 +5,10 @@ using UnityEngine.EventSystems;
 
 public class CameraController : MonoBehaviour
 {
-    public float maxZoom = 15;
-    float minZoom = 2;
+    //public float maxZoom = 15;
+    //float minZoom = 2;
 
-    public GameObject target;
+    public SaveGame save;
 
     private void Start() {
 
@@ -61,7 +61,7 @@ public class CameraController : MonoBehaviour
     void Snap() {
         Transform camera = Camera.main.transform;
 
-        transform.position = target.transform.position + Vector3.up;
+        transform.position = save.GetPlayer().transform.position + Vector3.up;
 
         Camera.main.transform.LookAt(transform);
 

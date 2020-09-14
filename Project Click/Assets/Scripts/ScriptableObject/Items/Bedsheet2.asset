@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8ebc87ec74d56344a9d24334278a05e, type: 3}
+  m_Name: Bedsheet2
+  m_EditorClassIdentifier: 
+  itemName: Bedsheets
+  itemImage: {fileID: 21300000, guid: 06a1dff959f23b548b75c559c4c24331, type: 3}
+  description: These haven't been washed in a while.
+  descriptionLong: These haven't been washed in a while.
+  combineWith: {fileID: 11400000, guid: 4b7af102e641c4841b09c509fbc45990, type: 2}
+  combineTo: {fileID: 11400000, guid: 9eb2898f13b8ff34dbdc6418d339d2d9, type: 2}
+  destroyOnCombine: 1

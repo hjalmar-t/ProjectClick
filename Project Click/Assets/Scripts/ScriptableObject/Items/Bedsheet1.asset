@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b8ebc87ec74d56344a9d24334278a05e, type: 3}
-  m_Name: File
+  m_Name: Bedsheet1
   m_EditorClassIdentifier: 
-  itemName: Crooked File
-  itemImage: {fileID: 21300000, guid: 4d8acbf52e5a76f45a8538b538d1c660, type: 3}
-  description: A small metal file. Useful for filing things.
-  descriptionLong: 
-  combineWith: {fileID: 0}
-  combineTo: {fileID: 0}
-  destroyOnCombine: 0
+  itemName: Bedsheets
+  itemImage: {fileID: 21300000, guid: 42266b71ebd10dd418c542643fbc8d67, type: 3}
+  description: Your bedsheets.
+  descriptionLong: Your bedsheets.
+  combineWith: {fileID: 11400000, guid: d6f577fef7f2d4649863937b4d587c70, type: 2}
+  combineTo: {fileID: 11400000, guid: 9eb2898f13b8ff34dbdc6418d339d2d9, type: 2}
+  destroyOnCombine: 1

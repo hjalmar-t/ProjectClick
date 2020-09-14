@@ -9,15 +9,15 @@ public class InventoryManager : MonoBehaviour
     //Add an inventory slot class that has a reference to all things that need to be GetComponented
     //Initialize it when compiling the array of slot objects
 
-    public enum InventoryState{
-        none,
-        use,
-        move
-    }
+    //public enum InventoryState{
+    //    none,
+    //    use,
+    //    move
+    //}
 
-    InventoryState state;
+    //InventoryState state;
 
-    public Inventory data;
+    public Inventory inventory;
 
     public GameObject root;
     public GameObject slotPrefab;
@@ -35,7 +35,7 @@ public class InventoryManager : MonoBehaviour
         //    slots.Add(root.transform.GetChild(i).gameObject);
         //}
 
-        state = InventoryState.none;
+        inventory.state = Inventory.State.none;
 
         for(int i = 0; i < Inventory.size; i++) {
             slots[i] = Instantiate(slotPrefab, root.transform);
@@ -46,8 +46,8 @@ public class InventoryManager : MonoBehaviour
 
     private void Update() {
         if (Input.GetButtonDown("Fire1") && !EventSystem.current.IsPointerOverGameObject()) {
-            data.SetCurrent(-1);
-            state = InventoryState.none;
+            inventory.SetCurrent(-1);
+            inventory.state = Inventory.State.none;
             ItemSelected(false);
         }
     }
@@ -57,10 +57,10 @@ public class InventoryManager : MonoBehaviour
         for(int i = 0; i < slots.Length; i++) {
 
             Image icon = slots[i].GetComponentInChildren<Image>();
-            if(data.GetAtIndex(i) != null) {
+            if(inventory.GetAtIndex(i) != null) {
                 //slots[i].GetComponentInChildren<Button>().interactable = true;
                 icon.enabled = true;
-                icon.sprite = data.GetAtIndex(i).GetItemImage();
+                icon.sprite = inventory.GetAtIndex(i).GetItemImage();
             }
             else {
                 //slots[i].GetComponentInChildren<Button>().interactable = false;
@@ -73,35 +73,61 @@ public class InventoryManager : MonoBehaviour
     public void SetState(int i) {
         switch(i) {
         case 0:
-            state = InventoryState.none;
+            inventory.state = Inventory.State.none;
             break;
         case 1:
-            state = InventoryState.use;
+            inventory.state = Inventory.State.use;
             break;
         case 2:
-            state = InventoryState.move;
+            inventory.state = Inventory.State.move;
             break;
         }
     }
 
     public void ButtonFunction(int i) {
-        if(state == InventoryState.move) {
-            data.Swap(i);
-            state = InventoryState.none;
+        // Do additional tasks before proceeding, based on the state.
+        switch(inventory.state) {
+        case Inventory.State.use:
+            Combine(i);
+            break;
+        case Inventory.State.move:
+            inventory.Swap(i);
+            break;
+        default:
+            break;
         }
+        // Reset to base state.
+        inventory.state = Inventory.State.none;
 
-        Item item = data.GetAtIndex(i);
+        // If the item at current index isn't null, set it as the current item.
+        Item item = inventory.GetAtIndex(i);
         if(item == null) return;
-
         Debug.Log("Button index " + i + " pressed.");
-        data.SetCurrent(i);
-        ItemSelected(true);
+        inventory.SetCurrent(i);
 
+        // Enable graphics based on current item.
+        ItemSelected(true);
         selectedIcon.sprite = item.GetItemImage();
         selectedDesc.text = string.Format("{0}: {1}", item.GetItemName(), item.GetDescription());
     }
 
-    public void ItemSelected(bool b) {
+    void Combine(int i) {
+        // Get both members.
+        Item itemA = inventory.GetAtIndex(i);
+        Item itemB = inventory.GetAtIndex(inventory.current);
+        // Return if even one of them is not defined.
+        if(itemA == null || itemB == null) return;
+        // Combine, if members are compatible. Based on their attributes, delete member(s) if necessary.
+        if(itemA.combineWith == itemB || itemB.combineWith == itemA) {
+            Item result = itemA.combineTo;
+            if(itemA.destroyOnCombine) inventory.RemoveAtIndex(i);
+            if(itemB.destroyOnCombine) inventory.RemoveAtIndex(inventory.current);
+
+            inventory.items[i] = result;
+        }
+    }
+
+    void ItemSelected(bool b) {
         useButton.interactable = b;
         moveButton.interactable = b;
 
